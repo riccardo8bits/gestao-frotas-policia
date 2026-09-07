@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faça seu login</title>
-    <link rel="stylesheet" href="../static/style.css">
-</head>
-<body>
+{% extends 'home.html' %}
+
+{% block content %}
 
 
-
-<header>
-    <div class="navbar">
-        <a href="login.html">PMSC GESTÃO E FROTA</a>
-        <a href="#">Login</a>
-    </div>
-</header>
-
-
-<main> 
+<main class="mainlogin"> 
     <div class="login-caixa">
         <div class="dentro-caixa">
             <h1 class="titulo-principal">PMSC GESTÃO E FROTA</h1>
@@ -26,7 +11,7 @@
             <img src="../static/image/logoDepartamento.png" alt="Logo PMSC" width="200px" height="200px">
             <p class="texto-restrito">Acesso restrito ao efetivo logístico.</p>
 
-            <form action="POST" class="form-login">
+            <form method="GET" action="/dashboard" class="form-login">
                 <div class="campo">
                     <label for="matricula">Matrícula</label>
                     <input type="text" id="matricula" placeholder="Ex: 999999-9">
@@ -37,7 +22,8 @@
                     <input type="password" id="senha" placeholder="******">
                 </div>
                 
-                <button type="button" class="botao-entrar">Entrar no Sistema</button>
+                <button type="submit" class="botao-entrar">Entrar no Sistema</button>
+                
             </form>
         </div>
     </div>
@@ -45,15 +31,4 @@
 
 
 
-
-<footer>
-
-
-    
-</footer>
-
-
-
-
-</body>
-</html>
+{% endblock content %}
