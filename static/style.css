@@ -1,0 +1,148 @@
+body{
+    margin: 0;
+    background-color: #F7F9FB;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+}
+
+a{
+
+    text-decoration: none;
+    color: white;
+
+}
+
+.navbar{
+
+    display: flex;
+    background-color: #1E293B;
+    justify-content: space-between;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    padding: 20px
+
+}
+
+.login-caixa {
+    width: 450px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+
+.mainlogin {
+
+    display: flex;
+    justify-content: center;
+}
+
+
+.dentro-caixa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.form-login {
+    width: 100%;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1E293B;
+    margin-bottom: 5px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #E2E8F0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.campo input:focus {
+    border-color: #1E293B;
+    outline: none;
+}
+
+.botao-entrar {
+    width: 100%;
+    padding: 14px;
+    background-color: #1E293B;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.botao-entrar:hover {
+    background-color: #0F172A;
+}
+
+
+
+.dashboard-container {  
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+
+    width: 200px;
+    background-color: #1E293B;
+
+}
+
+.navegacao_lado a {
+    display: block;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+}
+
+.navegacao_lado a:hover{
+    background-color: #2a3a6a;
+}
+
+.dashboard-contaider {
+
+        flex: 1;
+        padding: 20px;
+}
+
+.dashboard-content {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+.dashboard-content p{
+    align-items: center;
+    padding: 10px;
+}
+
+
+
+
