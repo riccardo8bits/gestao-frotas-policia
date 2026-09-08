@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'ricardo123'
 
@@ -26,13 +25,6 @@ def historicoManutencao():
 @app.route('/historicoVeiculo')
 def historicoVeiculo():
     return render_template('historicoVeiculo.html')
-
-
-
-
-
-    
-
 
 
 
