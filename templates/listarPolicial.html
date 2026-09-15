@@ -24,39 +24,21 @@
                     <th>Matrícula</th>
                     <th>Nome Completo</th>
                     <th>Cargo/Patente</th>
-                    <th>Status de Turno</th>
-                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
+
+                {% for policial in policiais %}
                 <tr>
-                    <td><strong>987654-3</strong></td>
-                    <td>Carlos Eduardo Silva</td>
-                    <td><span class="tag-cargo">Sargento</span></td>
-                    <td><span class="status-turno em-servico">● Em Serviço</span></td>
+                    <td><strong>{{ policial.matricula }}</strong></td>
+                    <td>{{ policial.nome }}</td>
+                    <td><span class="tag-cargo">{{ policial.cargo_patente }}</span></td>
+                    <td>
+                    </td>
                     <td class="acoes">✏️ 🗑️</td>
                 </tr>
-                <tr>
-                    <td><strong>123456-7</strong></td>
-                    <td>Ana Beatriz Costa</td>
-                    <td><span class="tag-cargo">Cabo</span></td>
-                    <td><span class="status-turno de-folga">● De Folga</span></td>
-                    <td class="acoes">✏️ 🗑️</td>
-                </tr>
-                <tr>
-                    <td><strong>456789-0</strong></td>
-                    <td>Roberto Almeida Nunes</td>
-                    <td><span class="tag-cargo">Tenente</span></td>
-                    <td><span class="status-turno em-servico">● Em Serviço</span></td>
-                    <td class="acoes">✏️ 🗑️</td>
-                </tr>
-                <tr>
-                    <td><strong>654321-9</strong></td>
-                    <td>Mariana Lopes Fernandes</td>
-                    <td><span class="tag-cargo">Soldado</span></td>
-                    <td><span class="status-turno de-folga">● De Folga</span></td>
-                    <td class="acoes">✏️ 🗑️</td>
-                </tr>
+                {% endfor %}
+
             </tbody>
         </table>
         
