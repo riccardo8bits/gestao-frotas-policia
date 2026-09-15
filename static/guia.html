@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Guia Back-end - Gestão de Frotas</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #f8fafc;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+        
+        h1 {
+            font-size: 32px;
+            color: #0F172A;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #1E293B;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            color: #0F172A;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        h3 {
+            font-size: 18px;
+            color: #1E293B;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            font-size: 15px;
+            color: #475569;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p { margin-bottom: 15px; color: #334155; }
+        
+        .subtitulo-guia {
+            font-size: 15px;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+        
+        .indice {
+            background: #f1f5f9;
+            padding: 25px 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 4px solid #1E293B;
+        }
+        
+        .indice h3 {
+            margin-top: 0;
+            color: #0F172A;
+        }
+        
+        .indice ul { list-style: none; padding-left: 0; }
+        .indice li { margin-bottom: 8px; }
+        .indice a {
+            color: #1E293B;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .indice a:hover { text-decoration: underline; }
+        
+        pre {
+            background: #0F172A;
+            color: #e2e8f0;
+            padding: 18px 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 12px 0 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        code {
+            background: #f1f5f9;
+            color: #dc2626;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+        }
+        
+        pre code {
+            background: none;
+            color: #e2e8f0;
+            padding: 0;
+        }
+        
+        .onde-esta {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 15px 0 10px;
+        }
+        
+        .onde-esta strong {
+            color: #dc2626;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .onde-vai {
+            background: #f0fdf4;
+            border-left: 4px solid #16a34a;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 15px 0 10px;
+        }
+        
+        .onde-vai strong {
+            color: #16a34a;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .variaveis {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin: 10px 0 20px;
+            font-size: 13px;
+        }
+        
+        .variaveis strong { color: #2563eb; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        
+        table th {
+            background: #1E293B;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+        }
+        
+        table tr:nth-child(even) { background: #f8fafc; }
+        
+        .bloco-secao {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px dashed #e2e8f0;
+        }
+        
+        .bloco-secao:last-child { border-bottom: none; }
+        
+        .nota {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        
+        .nota strong { color: #d97706; }
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 20px; }
+            pre { page-break-inside: avoid; }
+            .bloco-secao { page-break-inside: avoid; }
+            h2 { page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📘 Guia Back-end - Gestão de Frotas</h1>
+    <p class="subtitulo-guia">Onde colocar as variáveis Jinja2 em cada template para conectar com a API.</p>
+
+    <!-- ÍNDICE -->
+    <div class="indice">
+        <h3>📑 Índice</h3>
+        <ul>
+            <li><a href="#dashboard">1. Dashboard (Cards, Gráfico, Alertas)</a></li>
+            <li><a href="#policiais">2. Listagem de Policiais</a></li>
+            <li><a href="#responsaveis">3. Listagem de Responsáveis</a></li>
+            <li><a href="#viaturas">4. Listagem de Viaturas</a></li>
+            <li><a href="#itens">5. Listagem de Itens de Manutenção</a></li>
+            <li><a href="#formularios">6. Formulários (Cadastros)</a></li>
+            <li><a href="#jinja">7. Sintaxe Jinja2 ({% for %} e {% if %})</a></li>
+            <li><a href="#resumo">8. Tabela Resumo de Variáveis</a></li>
+        </ul>
+    </div>
+
+    <!-- 1. DASHBOARD -->
+    <div class="bloco-secao" id="dashboard">
+        <h2>1. Dashboard</h2>
+        <p>Arquivo: <code>templates/dashboard.html</code></p>
+
+        <h3>1.1 Cards (3 indicadores)</h3>
+
+        <h4>Card 1 - Taxa de Disponibilidade</h4>
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;div class="card-valor"&gt;85%&lt;/div&gt;
+&lt;div class="card-info positivo"&gt;↑ 2,4% vs mês anterior&lt;/div&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR:</strong>
+            <pre><code>&lt;div class="card-valor"&gt;{{ taxa_disponibilidade }}%&lt;/div&gt;
+&lt;div class="card-info positivo"&gt;↑ {{ variacao_taxa }}% vs mês anterior&lt;/div&gt;</code></pre>
+        </div>
+        <div class="variaveis">
+            <strong>Variáveis:</strong> <code>taxa_disponibilidade</code>, <code>variacao_taxa</code>
+        </div>
+
+        <h4>Card 2 - Custo Mensal</h4>
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;div class="card-valor"&gt;R$ 42.500&lt;/div&gt;
+&lt;div class="card-info"&gt;— Dentro da meta&lt;/div&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR:</strong>
+            <pre><code>&lt;div class="card-valor"&gt;R$ {{ custo_manutencao }}&lt;/div&gt;
+&lt;div class="card-info"&gt;— {{ status_custo }}&lt;/div&gt;</code></pre>
+        </div>
+        <div class="variaveis">
+            <strong>Variáveis:</strong> <code>custo_manutencao</code>, <code>status_custo</code>
+        </div>
+
+        <h4>Card 3 - Alertas Ativos</h4>
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;div class="card-valor vermelho"&gt;12&lt;/div&gt;
+&lt;div class="card-info vermelho"&gt;! Ação imediata requerida&lt;/div&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR:</strong>
+            <pre><code>&lt;div class="card-valor vermelho"&gt;{{ alertas_ativos }}&lt;/div&gt;
+&lt;div class="card-info vermelho"&gt;! Ação imediata requerida&lt;/div&gt;</code></pre>
+        </div>
+        <div class="variaveis">
+            <strong>Variável:</strong> <code>alertas_ativos</code>
+        </div>
+
+        <h3>1.2 Gráfico de Barras</h3>
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;div class="barra-item"&gt;
+    &lt;div class="barra-info"&gt;
+        &lt;span&gt;Elétrica&lt;/span&gt;
+        &lt;span&gt;35%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="barra-fundo"&gt;
+        &lt;div class="barra-preenchida" style="width: 35%;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- repete pra Motor, Suspensão, Freios --&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR (com loop):</strong>
+            <pre><code>{% for falha in motivos_falhas %}
+&lt;div class="barra-item"&gt;
+    &lt;div class="barra-info"&gt;
+        &lt;span&gt;{{ falha.nome }}&lt;/span&gt;
+        &lt;span&gt;{{ falha.percentual }}%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="barra-fundo"&gt;
+        &lt;div class="barra-preenchida" style="width: {{ falha.percentual }}%;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+{% endfor %}</code></pre>
+        </div>
+        <div class="variaveis">
+            <strong>Variável:</strong> <code>motivos_falhas</code> (lista com <code>nome</code> e <code>percentual</code>)
+        </div>
+
+        <h3>1.3 Lista de Alertas</h3>
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;div class="alerta-item"&gt;
+    &lt;div class="alerta-barra critico"&gt;&lt;/div&gt;
+    &lt;div class="alerta-info"&gt;
+        &lt;strong&gt;VTR-3092&lt;/strong&gt;
+        &lt;span&gt;Q3L-8B21&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class="badge critico"&gt;Crítico&lt;/span&gt;
+&lt;/div&gt;
+&lt;!-- repete pra cada alerta --&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR (com loop):</strong>
+            <pre><code>{% for alerta in alertas %}
+&lt;div class="alerta-item"&gt;
+    &lt;div class="alerta-barra {{ alerta.nivel }}"&gt;&lt;/div&gt;
+    &lt;div class="alerta-info"&gt;
+        &lt;strong&gt;{{ alerta.vtr }}&lt;/strong&gt;
+        &lt;span&gt;{{ alerta.placa }}&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class="badge {{ alerta.nivel }}"&gt;{{ alerta.status }}&lt;/span&gt;
+&lt;/div&gt;
+{% endfor %}</code></pre>
+        </div>
+        <div class="variaveis">
+            <strong>Variável:</strong> <code>alertas</code> (lista com <code>vtr</code>, <code>placa</code>, <code>nivel</code>, <code>status</code>)
+        </div>
+    </div>
+
+    <!-- 2. POLICIAIS -->
+    <div class="bloco-secao" id="policiais">
+        <h2>2. Listagem de Policiais</h2>
+        <p>Arquivo: <code>templates/listarPolicial.html</code></p>
+
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;987654-3&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Carlos Eduardo Silva&lt;/td&gt;
+    &lt;td&gt;&lt;span class="tag-cargo"&gt;Sargento&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span class="status-turno em-servico"&gt;● Em Serviço&lt;/span&gt;&lt;/td&gt;
+    &lt;td class="acoes"&gt;✏️ 🗑️&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR (com loop):</strong>
+            <pre><code>{% for policial in policiais %}
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;{{ policial.matricula }}&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;{{ policial.nome }}&lt;/td&gt;
+    &lt;td&gt;&lt;span class="tag-cargo"&gt;{{ policial.cargo }}&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;
+        &lt;span class="status-turno {% if policial.status == 'Em Serviço' %}em-servico{% else %}de-folga{% endif %}"&gt;
+            ● {{ policial.status }}
+        &lt;/span&gt;
+    &lt;/td&gt;
+    &lt;td class="acoes"&gt;✏️ 🗑️&lt;/td&gt;
+&lt;/tr&gt;
+{% endfor %}</code></pre>
+        </div>
+        <div class="variaveis">
+            <strong>Variável:</strong> <code>policiais</code> (lista com <code>matricula</code>, <code>nome</code>, <code>cargo</code>, <code>status</code>)
+        </div>
+
+        <h4>Rodapé</h4>
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;span&gt;Mostrando 1 a 4 de 120 policiais&lt;/span&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR:</strong>
+            <pre><code>&lt;span&gt;Mostrando {{ policiais|length }} de {{ total_policiais }} policiais&lt;/span&gt;</code></pre>
+        </div>
+        <div class="variaveis">
+            <strong>Variáveis:</strong> <code>policiais</code> (lista) e <code>total_policiais</code> (número)
+        </div>
+    </div>
+
+    <!-- 3. RESPONSÁVEIS -->
+    <div class="bloco-secao" id="responsaveis">
+        <h2>3. Listagem de Responsáveis</h2>
+        <p>Arquivo: <code>templates/listarResponsavel.html</code></p>
+
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;tr&gt;
+    &lt;td&gt;&lt;span class="tag-id"&gt;RSP-8042&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;
+        &lt;div class="pessoa-info"&gt;
+            &lt;span class="avatar azul"&gt;JS&lt;/span&gt;
+            &lt;span&gt;João da Silva&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/td&gt;
+    &lt;td&gt;&lt;span class="tag-cargo verde"&gt;Mecânico Chefe&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;12&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR (com loop):</strong>
+            <pre><code>{% for resp in responsaveis %}
+&lt;tr&gt;
+    &lt;td&gt;&lt;span class="tag-id"&gt;{{ resp.id_interno }}&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;
+        &lt;div class="pessoa-info"&gt;
+            &lt;span class="avatar {{ resp.cor }}"&gt;{{ resp.iniciais }}&lt;/span&gt;
+            &lt;span&gt;{{ resp.nome }}&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/td&gt;
+    &lt;td&gt;&lt;span class="tag-cargo {{ resp.cor_cargo }}"&gt;{{ resp.cargo }}&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;{{ resp.total_os }}&lt;/td&gt;
+&lt;/tr&gt;
+{% endfor %}</code></pre>
+        </div>
+        <div class="variaveis">
+            <strong>Variável:</strong> <code>responsaveis</code> (lista com <code>id_interno</code>, <code>iniciais</code>, <code>cor</code>, <code>nome</code>, <code>cargo</code>, <code>cor_cargo</code>, <code>total_os</code>)
+        </div>
+    </div>
+
+    <!-- 4. VIATURAS -->
+    <div class="bloco-secao" id="viaturas">
+        <h2>4. Listagem de Viaturas</h2>
+        <p>Arquivo: <code>templates/listarViatura.html</code></p>
+
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;tr&gt;
+    &lt;td&gt;&lt;span class="tag-id"&gt;V-4052&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;QZR-1234&lt;/td&gt;
+    &lt;td&gt;Renault Duster&lt;/td&gt;
+    &lt;td&gt;2022&lt;/td&gt;
+    &lt;td&gt;33.210 km&lt;/td&gt;
+    &lt;td&gt;&lt;span class="status-turno em-servico"&gt;● Operacional&lt;/span&gt;&lt;/td&gt;
+    &lt;td class="acoes"&gt;✏️ 🗑️&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR (com loop):</strong>
+            <pre><code>{% for viatura in viaturas %}
+&lt;tr&gt;
+    &lt;td&gt;&lt;span class="tag-id"&gt;{{ viatura.prefixo }}&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;{{ viatura.placa }}&lt;/td&gt;
+    &lt;td&gt;{{ viatura.modelo }}&lt;/td&gt;
+    &lt;td&gt;{{ viatura.ano }}&lt;/td&gt;
+    &lt;td&gt;{{ viatura.odometro }} km&lt;/td&gt;
+    &lt;td&gt;
+        &lt;span class="status-turno {% if viatura.status == 'Operacional' %}em-servico{% elif viatura.status == 'Revisão Pend.' %}revisao{% else %}oficina{% endif %}"&gt;
+            ● {{ viatura.status }}
+        &lt;/span&gt;
+    &lt;/td&gt;
+    &lt;td class="acoes"&gt;✏️ 🗑️&lt;/td&gt;
+&lt;/tr&gt;
+{% endfor %}</code></pre>
+        </div>
+        <div class="variaveis">
+            <strong>Variável:</strong> <code>viaturas</code> (lista com <code>prefixo</code>, <code>placa</code>, <code>modelo</code>, <code>ano</code>, <code>odometro</code>, <code>status</code>)
+        </div>
+
+        <h4>Rodapé</h4>
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;span&gt;Mostrando 1 a 4 de 124 viaturas&lt;/span&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR:</strong>
+            <pre><code>&lt;span&gt;Mostrando {{ viaturas|length }} de {{ total_viaturas }} viaturas&lt;/span&gt;</code></pre>
+        </div>
+    </div>
+
+    <!-- 5. ITENS -->
+    <div class="bloco-secao" id="itens">
+        <h2>5. Listagem de Itens de Manutenção</h2>
+        <p>Arquivo: <code>templates/listarItemManutencao.html</code></p>
+
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;#ITM-001&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;strong&gt;Pastilha de Freio Dianteira&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Freios&lt;/td&gt;
+    &lt;td&gt;R$ 145,00&lt;/td&gt;
+    &lt;td&gt;&lt;span class="badge-estoque critico"&gt;● Crítico (3)&lt;/span&gt;&lt;/td&gt;
+    &lt;td class="acoes"&gt;✏️ 🗑️&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR (com loop + if):</strong>
+            <pre><code>{% for item in itens %}
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;{{ item.id }}&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;strong&gt;{{ item.descricao }}&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;{{ item.categoria }}&lt;/td&gt;
+    &lt;td&gt;R$ {{ item.valor_unitario }}&lt;/td&gt;
+    &lt;td&gt;
+        &lt;span class="badge-estoque {% if item.quantidade <= 5 %}critico{% elif item.quantidade <= 15 %}atencao{% else %}normal{% endif %}"&gt;
+            ● 
+            {% if item.quantidade <= 5 %}Crítico
+            {% elif item.quantidade <= 15 %}Atenção
+            {% else %}Normal{% endif %}
+            ({{ item.quantidade }})
+        &lt;/span&gt;
+    &lt;/td&gt;
+    &lt;td class="acoes"&gt;✏️ 🗑️&lt;/td&gt;
+&lt;/tr&gt;
+{% endfor %}</code></pre>
+        </div>
+        <div class="variaveis">
+            <strong>Variável:</strong> <code>itens</code> (lista com <code>id</code>, <code>descricao</code>, <code>categoria</code>, <code>valor_unitario</code>, <code>quantidade</code>)
+        </div>
+    </div>
+
+    <!-- 6. FORMULÁRIOS -->
+    <div class="bloco-secao" id="formularios">
+        <h2>6. Formulários (Cadastros)</h2>
+        <p>Os formulários usam <code>method="POST"</code> e <code>action</code> apontando para a rota que salva no banco.</p>
+
+        <h4>Cadastro de Policial</h4>
+        <p>Arquivo: <code>templates/cadastroPolicial.html</code></p>
+        <div class="onde-esta">
+            <strong>ONDE ESTÁ:</strong>
+            <pre><code>&lt;form&gt;
+    &lt;input type="text" placeholder="000.000-0"&gt;
+    &lt;input type="text" placeholder="Ex: João da Silva"&gt;
+    &lt;select&gt;...&lt;/select&gt;
+    &lt;button class="btn-salvar"&gt;💾 Salvar Policial&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+        <div class="onde-vai">
+            <strong>ONDE VAI FICAR:</strong>
+            <pre><code>&lt;form method="POST" action="/cadastrarPolicial"&gt;
+    &lt;input type="text" name="matricula" placeholder="000.000-0"&gt;
+    &lt;input type="text" name="nome" placeholder="Ex: João da Silva"&gt;
+    &lt;select name="cargo"&gt;...&lt;/select&gt;
+    &lt;button type="submit" class="btn-salvar"&gt;💾 Salvar Policial&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+        <div class="nota">
+            <strong>⚠️ Atenção:</strong> Todo <code>&lt;input&gt;</code> e <code>&lt;select&gt;</code> precisa de <code>name="..."</code> para o Flask conseguir ler o valor no back-end.
+        </div>
+
+        <h4>Cadastro de Viatura</h4>
+        <p>Arquivo: <code>templates/cadastroViatura.html</code></p>
+        <pre><code>&lt;form method="POST" action="/cadastrarViatura"&gt;
+    &lt;input type="text" name="placa" placeholder="Ex: ABC1D23"&gt;
+    &lt;input type="text" name="prefixo" placeholder="Ex: V-1234"&gt;
+    &lt;select name="modelo"&gt;...&lt;/select&gt;
+    &lt;input type="text" name="ano" placeholder="YYYY"&gt;
+    &lt;input type="number" name="odometro" placeholder="0"&gt;
+    &lt;button type="submit" class="btn-salvar"&gt;💾 SALVAR VIATURA&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+        <h4>Cadastro de Responsável</h4>
+        <p>Arquivo: <code>templates/cadastroResponsavel.html</code></p>
+        <pre><code>&lt;form method="POST" action="/cadastrarResponsavel"&gt;
+    &lt;input type="text" name="id_interno" value="RSP-8042" readonly&gt;
+    &lt;select name="cargo"&gt;...&lt;/select&gt;
+    &lt;input type="text" name="nome" placeholder="Ex: Sgt. João Silva"&gt;
+    &lt;button type="submit" class="btn-cadastrar-resp"&gt;👥 Cadastrar Responsável&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+        <h4>Cadastro de Itens de Manutenção</h4>
+        <p>Arquivo: <code>templates/cadastroItensManutencao.html</code></p>
+        <pre><code>&lt;form method="POST" action="/cadastrarItem"&gt;
+    &lt;input type="text" name="descricao" placeholder="Ex: Pastilha de freio dianteira"&gt;
+    &lt;select name="categoria"&gt;...&lt;/select&gt;
+    &lt;input type="text" name="valor_unitario" placeholder="R$ 0,00"&gt;
+    &lt;input type="number" name="quantidade" value="1"&gt;
+    &lt;button type="submit" class="btn-salvar"&gt;💾 Salvar Item&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+        <h4>Ordem de Serviço (Manutenção)</h4>
+        <p>Arquivo: <code>templates/historicoManutencao.html</code></p>
+        <pre><code>&lt;form method="POST" action="/cadastrarManutencao"&gt;
+    &lt;input type="text" name="viatura" placeholder="Digite Placa ou Prefixo"&gt;
+    &lt;select name="tipo"&gt;...&lt;/select&gt;
+    &lt;select name="categoria"&gt;...&lt;/select&gt;
+    &lt;input type="text" name="custo" placeholder="R$ 0,00"&gt;
+    &lt;textarea name="descricao"&gt;&lt;/textarea&gt;
+    &lt;button type="submit" class="btn-salvar"&gt;💾 Finalizar Ordem de Serviço&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+    </div>
+
+    <!-- 7. JINJA2 -->
+    <div class="bloco-secao" id="jinja">
+        <h2>7. Sintaxe Jinja2</h2>
+
+        <h3>Loop ({% for %})</h3>
+        <p>Use quando você tem uma <strong>lista de itens</strong> (várias linhas de tabela, vários cards, etc).</p>
+        <pre><code>{% for ITEM in LISTA %}
+    &lt;!-- HTML repetido, usando {{ ITEM.campo }} --&gt;
+{% endfor %}</code></pre>
+
+        <h3>Condicional ({% if %})</h3>
+        <p>Use quando você precisa <strong>mudar o HTML</strong> dependendo do valor.</p>
+        <pre><code>{% if condicao %}
+    &lt;!-- HTML se verdadeiro --&gt;
+{% elif outra_condicao %}
+    &lt;!-- HTML se outra --&gt;
+{% else %}
+    &lt;!-- HTML se nenhuma --&gt;
+{% endif %}</code></pre>
+
+        <h3>Variável simples ({{ }})</h3>
+        <p>Use quando você quer <strong>mostrar um valor</strong> do back-end.</p>
+        <pre><code>{{ nome_da_variavel }}
+{{ objeto.campo }}
+{{ lista|length }}   &lt;!-- tamanho da lista --&gt;</code></pre>
+
+        <div class="nota">
+            <strong>💡 Dica:</strong> O <code>|length</code> retorna o número de itens da lista. Útil para "Mostrando X de Y".
+        </div>
+    </div>
+
+    <!-- 8. RESUMO -->
+    <div class="bloco-secao" id="resumo">
+        <h2>8. Tabela Resumo de Variáveis</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tela</th>

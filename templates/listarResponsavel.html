@@ -1,0 +1,69 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<main class="dashboard-content">
+    
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <div>
+            <h1>Listagem de Responsáveis</h1>
+            <p class="subtitulo">Gerencie os responsáveis de manutenção e visualize suas ordens de serviço vinculadas.</p>
+        </div>
+        <div class="topbar-acoes">
+            <input type="text" placeholder="🔍 Buscar responsável..." class="topbar-busca">
+        </div>
+    </div>
+
+    <!-- TABELA -->
+    <div class="tabela-container">
+        <table class="tabela-viaturas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome Completo</th>
+                    <th>Função / Cargo</th>
+                    <th>Total OS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="tag-id">RSP-8042</span></td>
+                    <td>
+                        <div class="pessoa-info">
+                            
+                            <span>João da Silva</span>
+                        </div>
+                    </td>
+                    <td><span class="tag-cargo verde">Mecânico Chefe</span></td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-id">RSP-3910</span></td>
+                    <td>
+                        <div class="pessoa-info">
+                            
+                            <span>Maria Costa</span>
+                        </div>
+                    </td>
+                    <td><span class="tag-cargo azul">Supervisora</span></td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-id">RSP-1193</span></td>
+                    <td>
+                        <div class="pessoa-info">
+                            
+                            <span>Pedro Almeida</span>
+                        </div>
+                    </td>
+                    <td><span class="tag-cargo cinza">Gestor de Frota</span></td>
+                    <td>8</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+{% endblock content %}

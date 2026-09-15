@@ -1,0 +1,77 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<main class="dashboard-content">
+    
+    <div class="form-centralizado">
+        <div class="form-card-responsavel">
+            
+            <!-- CABEÇALHO -->
+            <div class="form-header">
+                <div>
+                    <h2 class="form-titulo-esq">Cadastro de Itens de Manutenção</h2>
+                    <p class="form-subtitulo-esq">Adicione novos componentes ao inventário de manutenção da frota.</p>
+                </div>
+            </div>
+            
+            <!-- CORPO -->
+            <div class="form-corpo">
+                
+                <!-- Subtítulo da seção -->
+                <div class="secao-titulo">
+                    Detalhes do Item
+                </div>
+
+                <!-- DESCRIÇÃO -->
+                <div class="form-linha">
+                    <div class="form-campo full">
+                        <label>Descrição</label>
+                        <input type="text" placeholder="Ex: Pastilha de freio dianteira">
+                        <small class="input-ajuda">Nome completo do componente ou peça.</small>
+                    </div>
+                </div>
+
+                <!-- CATEGORIA + VALOR -->
+                <div class="form-linha">
+                    <div class="form-campo">
+                        <label>Categoria da Falha</label>
+                        <select>
+                            <option>Selecione uma categoria</option>
+                            <option>Elétrica</option>
+                            <option>Motor</option>
+                            <option>Suspensão</option>
+                            <option>Freios</option>
+                            <option>Pneus</option>
+                        </select>
+                    </div>
+                    <div class="form-campo">
+                        <label>Valor Unitário (R$)</label>
+                        <input type="text" placeholder="R$ 0,00">
+                    </div>
+                </div>
+
+                <!-- QUANTIDADE -->
+                <div class="form-linha">
+                    <div class="form-campo">
+                        <label>Quantidade Inicial</label>
+                        <div class="quantidade">
+                            <input type="number" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOTÕES -->
+                <div class="form-acoes-responsavel">
+                    <button class="btn-cancelar">Cancelar</button>
+                    <button class="btn-salvar">Salvar Item</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+{% endblock content %}

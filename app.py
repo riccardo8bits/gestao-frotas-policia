@@ -27,6 +27,37 @@ def historicoVeiculo():
     return render_template('historicoVeiculo.html')
 
 
+@app.route('/cadastroViatura')
+def cadastro_viatura():
+    return render_template('cadastroViatura.html')
+
+@app.route('/cadastroPolicial')
+def cadastro_policial():
+    return render_template('cadastroPolicial.html')
+
+@app.route('/listarPolicial')
+def listar_policial():
+    return render_template('listarPolicial.html')
+
+@app.route('/cadastroResponsavel')
+def cadastroResponsavel():
+    return render_template('cadastroResponsavel.html')
+
+@app.route('/listarResponsavel')
+def listarResponsavel():
+    return render_template('listarResponsavel.html')
+
+@app.route('/listarViatura')
+def listarViatura():
+    return render_template('listarViatura.html')
+
+@app.route('/cadastroItensManutencao')
+def cadastroItensManutencao():
+    return render_template('cadastroItensManutencao.html')
+
+@app.route('/listarItemManutencao')
+def listarItemManutencao():
+    return render_template('listarItemManutencao.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

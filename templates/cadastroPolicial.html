@@ -1,0 +1,65 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<main class="dashboard-content">
+    
+    <div class="form-centralizado">
+        <div class="form-card">
+            
+            <!-- ÍCONE -->
+            <div class="form-icone-topo"></div>
+            
+            <!-- TÍTULO -->
+            <h2 class="form-titulo">Cadastro de Policial</h2>
+            <p class="form-subtitulo">Insira os dados do oficial para registrá-lo no sistema de frota.</p>
+            
+            <!-- CAMPOS -->
+            <div class="form-linha">
+                <div class="form-campo">
+                    <label>Matrícula</label>
+                    <div class="input-com-icone">
+                        <img class="input-icone" src="../static/image/logoDepartamento.png "alt="Ícone de Departamento" width="20" height="20">
+                        <input type="text" placeholder="000.000-0">
+                    </div>
+                </div>
+                <div class="form-campo">
+                    <label>Nome Completo</label>
+                    <div class="input-com-icone">
+                        <span class="input-icone"></span>
+                        <input type="text" placeholder="Ex: João da Silva">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-linha">
+                <div class="form-campo">
+                    <label>Cargo / Patente</label>
+                    <select>
+                        <option>Selecione a patente</option>
+                        <option>Soldado</option>
+                        <option>Cabo</option>
+                        <option>Sargento</option>
+                        <option>Tenente</option>
+                        <option>Capitão</option>
+                    </select>
+                </div>
+                <div class="form-campo">
+                    <label>ID Interno</label>
+                    <input type="text" value="# ID-2024-842" disabled class="input-disabled">
+                    <small class="input-ajuda">Gerado automaticamente pelo sistema.</small>
+                </div>
+            </div>
+
+            <!-- BOTÕES -->
+            <div class="form-acoes">
+                <button class="btn-limpar">Limpar Formulário</button>
+                <button class="btn-salvar">Salvar Policial</button>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+{% endblock content %}

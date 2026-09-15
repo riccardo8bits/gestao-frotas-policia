@@ -1,0 +1,90 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<main class="dashboard-content">
+    
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <div>
+            <h1>Listagem de Itens de Manutenção</h1>
+            <p class="subtitulo">Gerencie o estoque e peças de reposição da frota.</p>
+        </div>
+        <div class="topbar-acoes">
+            <a href="/cadastroItensManutencao" class="btn-incluir">+ Novo Item</a>
+        </div>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filtros-container">
+        <input type="text" placeholder="Buscar por descrição ou ID..." class="filtro-busca">
+        <select class="filtro-select">
+            <option>Todas as Categorias</option>
+            <option>Elétrica</option>
+            <option>Motor</option>
+            <option>Suspensão</option>
+            <option>Freios</option>
+        </select>
+    </div>
+
+    <!-- TABELA -->
+    <div class="tabela-container">
+        <table class="tabela-viaturas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Valor Unit.</th>
+                    <th>Quantidade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>#ITM-001</strong></td>
+                    <td><strong>Pastilha de Freio Dianteira</strong></td>
+                    <td>Freios</td>
+                    <td>R$ 145,00</td>
+                    <td><span class="badge-estoque critico">● Crítico (3)</span></td>
+                    <td class="acoes">✏️ 🗑️</td>
+                </tr>
+                <tr>
+                    <td><strong>#ITM-042</strong></td>
+                    <td><strong>Filtro de Óleo Diesel</strong></td>
+                    <td>Motor</td>
+                    <td>R$ 85,50</td>
+                    <td><span class="badge-estoque atencao">● Atenção (12)</span></td>
+                    <td class="acoes">✏️ 🗑️</td>
+                </tr>
+                <tr>
+                    <td><strong>#ITM-108</strong></td>
+                    <td><strong>Lâmpada H7 Farol</strong></td>
+                    <td>Elétrica</td>
+                    <td>R$ 32,00</td>
+                    <td><span class="badge-estoque normal">● Normal (45)</span></td>
+                    <td class="acoes">✏️ 🗑️</td>
+                </tr>
+                <tr>
+                    <td><strong>#ITM-088</strong></td>
+                    <td><strong>Amortecedor Traseiro</strong></td>
+                    <td>Suspensão</td>
+                    <td>R$ 350,00</td>
+                    <td><span class="badge-estoque normal">● Normal (18)</span></td>
+                    <td class="acoes">✏️ 🗑️</td>
+                </tr>
+                <tr>
+                    <td><strong>#ITM-015</strong></td>
+                    <td><strong>Correia Dentada</strong></td>
+                    <td>Motor</td>
+                    <td>R$ 180,00</td>
+                    <td><span class="badge-estoque critico">● Crítico (1)</span></td>
+                    <td class="acoes">✏️ 🗑️</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+{% endblock content %}

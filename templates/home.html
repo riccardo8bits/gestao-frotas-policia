@@ -21,13 +21,29 @@
 <div class="dashboard-container">
     <aside class="sidebar">
         <nav class="navegacao_lado">
-            <a href="/dashboard">Dashboard</a>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            
+            <a href="{{ url_for('cadastroItensManutencao') }}">Cadastro de Itens de Manutenção</a>
+            
+            <a href="{{ url_for('cadastro_viatura') }}">Cadastro de Viatura</a>
 
-            <a href="/frota">Frota</a>
+            <a href="{{ url_for('cadastro_policial') }}">Cadastro de Policiais</a>
+            
+            <a href="{{ url_for('cadastroResponsavel')}}">Cadastro de Responsáveis</a>
 
-            <a href="/historicoManutencao">Histórico de manutenção</a>
+            <a href="{{ url_for('historicoManutencao') }}">Histórico de manutenção</a>
 
-            <a href="/historicoVeiculo">Histórico do veículo</a>
+            <a href="{{ url_for('historicoVeiculo') }}">Histórico do veículo</a>
+
+            <a href="{{ url_for('listar_policial')}}">Listar Policiais</a>
+
+            <a href="{{ url_for('listarResponsavel')}}">Listar Responsáveis</a>
+
+            <a href="{{ url_for('listarViatura') }}">Listar Viaturas</a>
+
+            <a href="{{url_for('listarItemManutencao')}}">Listar Itens de Manutenção</a>
+
+
         </nav>
     </aside>
 
