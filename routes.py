@@ -11,7 +11,7 @@ def get_policial():
 
 def post_policial(nome,email,senha,cargo_patente,matricula):
     url = f"{endereco}/post_policial"
-
+#
     dados = {
         "nome": nome,
         "email": email,
