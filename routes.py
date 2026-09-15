@@ -1,5 +1,5 @@
 import requests 
-
+#
 endereco = "http://10.135.232.30:5005"
 
 def get_policial():
