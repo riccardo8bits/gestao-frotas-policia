@@ -93,7 +93,7 @@ def get_itens():
         print(f"Erro ao buscar itens: {e}")
         return "Erro: Não foi possível listar os itens", 500
 
-
+#
 
 
 @app.route('/post_policial', methods=['POST'])
