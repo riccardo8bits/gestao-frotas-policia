@@ -23,25 +23,25 @@
         <nav class="navegacao_lado">
             <a href="{{ url_for('dashboard') }}">Dashboard</a>
             
-            <a href="{{ url_for('cadastroItensManutencao') }}">Cadastro de Itens de Manutenção</a>
+            <a href="{{ url_for('rota_itens_manutencao') }}">Cadastro de Itens de Manutenção</a>
             
-            <a href="{{ url_for('cadastro_viatura') }}">Cadastro de Viatura</a>
+            <a href="{{ url_for('post_viatura') }}">Cadastro de Viatura</a>
 
-            <a href="{{ url_for('cadastro_policial') }}">Cadastro de Policiais</a>
+            <a href="{{ url_for('post_policial') }}">Cadastro de Policiais</a>
             
-            <a href="{{ url_for('cadastroResponsavel')}}">Cadastro de Responsáveis</a>
+            <a href="{{ url_for('post_responsavel')}}">Cadastro de Responsáveis</a>
 
-            <a href="{{ url_for('historicoManutencao') }}">Histórico de manutenção</a>
+            <a href="#">Histórico de manutenção</a>
 
-            <a href="{{ url_for('historicoVeiculo') }}">Histórico do veículo</a>
+            <a href="#">Histórico do veículo</a>
 
-            <a href="{{ url_for('listar_policial')}}">Listar Policiais</a>
+            <a href="{{ url_for('get_policiais')}}">Listar Policiais</a>
 
-            <a href="{{ url_for('listarResponsavel')}}">Listar Responsáveis</a>
+            <a href="{{ url_for('get_responsaveis')}}">Listar Responsáveis</a>
 
-            <a href="{{ url_for('listarViatura') }}">Listar Viaturas</a>
+            <a href="{{ url_for('get_viaturas') }}">Listar Viaturas</a>
 
-            <a href="{{url_for('listarItemManutencao')}}">Listar Itens de Manutenção</a>
+            <a href="{{url_for('get_itens')}}">Listar Itens de Manutenção</a>
 
 
         </nav>
