@@ -12,7 +12,7 @@
 
 <header>
     <div class="navbar">
-        <a href="/dashboard">PMSC GESTÃO E FROTA</a>
+        <a href="/index">PMSC GESTÃO E FROTA</a>
         <a href="/">Login</a>
     </div>
 </header>
@@ -21,28 +21,31 @@
 <div class="dashboard-container">
     <aside class="sidebar">
         <nav class="navegacao_lado">
-            <a href="{{ url_for('dashboard') }}">Dashboard</a>
-            
-            <a href="{{ url_for('rota_itens_manutencao') }}">Cadastro de Itens de Manutenção</a>
-            
-            <a href="{{ url_for('post_viatura') }}">Cadastro de Viatura</a>
+            <a href="{{ url_for('index') }}">Dashboard</a>
 
-            <a href="{{ url_for('post_policial') }}">Cadastro de Policiais</a>
+            <a href="{{ url_for('listar_policial')}}">Listar Policiais</a>
+
+            <a href="{{ url_for('listar_responsavel')}}">Listar Responsáveis</a>
+
+            <a href="{{ url_for('listar_viatura') }}">Listar Viaturas</a>
+
+            <a href="{{url_for('listar_itens')}}">Listar Itens de Manutenção</a>
+
+
             
-            <a href="{{ url_for('post_responsavel')}}">Cadastro de Responsáveis</a>
+            <a href="{{ url_for('cadastrar_item') }}">Cadastro de Itens de Manutenção</a>
+            
+            <a href="{{ url_for('cadastrar_viatura') }}">Cadastro de Viatura</a>
+
+            <a href="{{ url_for('cadastrar_policial') }}">Cadastro de Policiais</a>
+            
+            <a href="{{ url_for('cadastrar_responsavel')}}">Cadastro de Responsáveis</a>
 
             <a href="#">Histórico de manutenção</a>
 
             <a href="#">Histórico do veículo</a>
 
-            <a href="{{ url_for('get_policiais')}}">Listar Policiais</a>
-
-            <a href="{{ url_for('get_responsaveis')}}">Listar Responsáveis</a>
-
-            <a href="{{ url_for('get_viaturas') }}">Listar Viaturas</a>
-
-            <a href="{{url_for('get_itens')}}">Listar Itens de Manutenção</a>
-
+            
 
         </nav>
     </aside>

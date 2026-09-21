@@ -1,11 +1,12 @@
 import requests 
 #
-endereco = "http://10.135.232.30:5005"
+endereco = "http://10.135.232.18:5005"
 
 def get_policial():
     url = f"{endereco}/get_policiais"
 
     result_policia = requests.get(url)
+
 
     return result_policia.json()
 
