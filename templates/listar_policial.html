@@ -23,7 +23,9 @@
                 <tr>
                     <th>Matrícula</th>
                     <th>Nome Completo</th>
+                    <th>Email</th>
                     <th>Cargo/Patente</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,9 +34,8 @@
                 <tr>
                     <td><strong>{{ policial.matricula }}</strong></td>
                     <td>{{ policial.nome }}</td>
+                    <td>{{ policial.email }}</td>
                     <td><span class="tag-cargo">{{ policial.cargo_patente }}</span></td>
-                    <td>
-                    </td>
                     <td class="acoes">✏️ 🗑️</td>
                 </tr>
                 {% endfor %}

@@ -1,8 +1,8 @@
 from datetime import timedelta, datetime
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, redirect, url_for, flash
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
-from routes import post_policial, post_responsavel, post_listarItemManutencao, get_policial,get_listarItemManutencao, get_responsavel
+from routes import *
 import os
 from dotenv import load_dotenv
 # gera token
@@ -26,22 +26,36 @@ def frota():
 
 
 
-@app.route('/listar_policial')
+@app.route('/listar_policial',methods=['GET'])
 def listar_policial():
     var_policial = get_policial()
     return render_template('listar_policial.html',var_policial = var_policial)
 
+
+
 @app.route('/listar_responsavel')
 def listar_responsavel():
-    return render_template('listar_responsavel.html')
+    var_responsavel = get_responsavel()
+    print("Responsavel:",var_responsavel)
+    return render_template('listar_responsavel.html', var_responsavel = var_responsavel )
+
+
+
 
 @app.route('/listar_viatura')
 def listar_viatura():
-    return render_template('listar_viatura.html')
+    var_viatura = get_viatura()
+    return render_template('listar_viatura.html', var_viatura = var_viatura )
+
+
 
 @app.route('/listar_itens')
 def listar_itens():
-    return render_template('listar_itens.html')
+    var_itens = get_itens()
+    print(var_itens)
+    return render_template('listar_itens.html', var_itens = var_itens)
+
+
 
 
 @app.route('/cadastrar_viatura')
@@ -52,12 +66,65 @@ def cadastrar_viatura():
 def cadastrar_policial():
     return render_template('cadastrar_policial.html')
 
-@app.route('/cadastrar_responsavel')
+@app.route('/cadastrar_responsavel', methods=['GET', 'POST'])
 def cadastrar_responsavel():
+    if request.method == "POST":
+        nome = request.form.get('form_nome')
+        email = request.form.get('form_email')
+        cargo = request.form.get('form_cargo_funcao')
+        senha = request.form.get('form_senha')
+
+        print(nome,email,cargo,senha)
+        
+
+
+        if not nome or not email or not cargo or not senha:
+            print("error: valores inválidos")
+            flash("Digite em todos os campos","danger")
+            return redirect(url_for('cadastrar_responsavel'))
+
+        try:
+            post_responsavel(nome=nome, cargo_funcao=cargo, email=email, senha=senha)
+            flash("Item cadastrado com sucesso!", "success")
+            return redirect(url_for('cadastrar_responsavel'))
+        
+
+        except Exception as e:
+            print(f'Error: {e}')
+            flash('Falha no Sistema Interno, Tente Novamente mais Tarde.', 'warning')
+            return redirect(url_for('cadastrar_responsavel'))
+
+
+
     return render_template('cadastrar_responsavel.html')
 
-@app.route('/cadastrar_item')
+
+
+
+@app.route('/cadastrar_item', methods=['GET','POST'])
 def cadastrar_item():
+    if request.method == "POST":
+        nome = request.form.get('form_nome')
+        descricao = request.form.get('form_descricao')
+        categoria = request.form.get('form_categoria')
+        valor_unitario = request.form.get('form_valor')
+
+        if not nome or not descricao or not categoria or not valor_unitario or categoria == "none":
+            print('error: valores invalidos')
+            flash("Digite em todos os campos", 'danger')    
+            return redirect(url_for('cadastrar_item'))
+
+        try:
+            post_item(nome_item=nome,descricao=descricao,categoria_falha=categoria,valor_unitario=valor_unitario)
+            flash('Item cadastrado com Sucesso!','success')
+            return redirect(url_for('listar_itens'))
+        except Exception as e:
+            print(f'Error: {e}')
+            flash('Falha no Sistema Interno, Tente Novamente mais Tarde.', 'warning')
+            return redirect(url_for('cadastrar_item'))
+
+
+
     return render_template('cadastrar_item.html')
 
 

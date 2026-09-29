@@ -31,42 +31,17 @@
                 </tr>
             </thead>
             <tbody>
+                {% for viatura in var_viatura %}
                 <tr>
-                    <td><span class="tag-id">V-4052</span></td>
-                    <td>QZR-1234</td>
-                    <td>Renault Duster</td>
-                    <td>2022</td>
-                    <td>33.210 km</td>
-                    <td><span class="status-turno em-servico">● Operacional</span></td>
+                    <td><strong>{{ viatura.prefixo }}</strong></td>
+                    <td>{{ viatura.placa }}</td>
+                    <td>{{ viatura.modelo }}</td>
+                    <td>{{ viatura.ano }}</td>
+                    <td>{{ viatura.km_atual }}</td>
+                    <td><span class="tag-cargo">{{ viatura.status_atual }}</span></td>
                     <td class="acoes">✏️ 🗑️</td>
                 </tr>
-                <tr>
-                    <td><span class="tag-id">V-4088</span></td>
-                    <td>RXL-5678</td>
-                    <td>Chevrolet Trailblazer</td>
-                    <td>2023</td>
-                    <td>12.050 km</td>
-                    <td><span class="status-turno revisao">● Revisão Pend.</span></td>
-                    <td class="acoes">✏️ 🗑️</td>
-                </tr>
-                <tr>
-                    <td><span class="tag-id">V-3011</span></td>
-                    <td>MXT-5522</td>
-                    <td>Mitsubishi L200</td>
-                    <td>2019</td>
-                    <td>109.480 km</td>
-                    <td><span class="status-turno oficina">● Oficina</span></td>
-                    <td class="acoes">✏️ 🗑️</td>
-                </tr>
-                <tr>
-                    <td><span class="tag-id">V-4102</span></td>
-                    <td>ABC-1121</td>
-                    <td>Renault Duster</td>
-                    <td>2022</td>
-                    <td>51.100 km</td>
-                    <td><span class="status-turno em-servico">● Operacional</span></td>
-                    <td class="acoes">✏️ 🗑️</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
         

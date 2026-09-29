@@ -22,44 +22,21 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome Completo</th>
+                    <th>Email</th>
                     <th>Função / Cargo</th>
-                    <th>Total OS</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
+                {% for responsavel in var_responsavel %}
                 <tr>
-                    <td><span class="tag-id">RSP-8042</span></td>
-                    <td>
-                        <div class="pessoa-info">
-                            
-                            <span>João da Silva</span>
-                        </div>
-                    </td>
-                    <td><span class="tag-cargo verde">Mecânico Chefe</span></td>
-                    <td>12</td>
+                    <td><strong>{{ responsavel.id_responsavel }}</strong></td>
+                    <td>{{ responsavel.nome }}</td>
+                    <td>{{ responsavel.email }}</td>
+                    <td><span class="tag-cargo">{{ responsavel.cargo_funcao }}</span></td>
+                    <td class="acoes">✏️ 🗑️</td>
                 </tr>
-                <tr>
-                    <td><span class="tag-id">RSP-3910</span></td>
-                    <td>
-                        <div class="pessoa-info">
-                            
-                            <span>Maria Costa</span>
-                        </div>
-                    </td>
-                    <td><span class="tag-cargo azul">Supervisora</span></td>
-                    <td>45</td>
-                </tr>
-                <tr>
-                    <td><span class="tag-id">RSP-1193</span></td>
-                    <td>
-                        <div class="pessoa-info">
-                            
-                            <span>Pedro Almeida</span>
-                        </div>
-                    </td>
-                    <td><span class="tag-cargo cinza">Gestor de Frota</span></td>
-                    <td>8</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

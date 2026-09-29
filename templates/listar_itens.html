@@ -33,54 +33,24 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Nome</th>
                     <th>Descrição</th>
                     <th>Categoria</th>
                     <th>Valor Unit.</th>
-                    <th>Quantidade</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
+                {% for item in var_itens %}
                 <tr>
-                    <td><strong>#ITM-001</strong></td>
-                    <td><strong>Pastilha de Freio Dianteira</strong></td>
-                    <td>Freios</td>
-                    <td>R$ 145,00</td>
-                    <td><span class="badge-estoque critico">● Crítico (3)</span></td>
+                    <td><strong>{{ item['id_item'] }}</strong></td>
+                    <td>{{ item.nome_item }}</td>
+                    <td>{{ item.descricao }}</td>
+                    <td>{{ item.categoria_falha }}</td>
+                    <td>{{ item.valor_unitario }}</td>
                     <td class="acoes">✏️ 🗑️</td>
                 </tr>
-                <tr>
-                    <td><strong>#ITM-042</strong></td>
-                    <td><strong>Filtro de Óleo Diesel</strong></td>
-                    <td>Motor</td>
-                    <td>R$ 85,50</td>
-                    <td><span class="badge-estoque atencao">● Atenção (12)</span></td>
-                    <td class="acoes">✏️ 🗑️</td>
-                </tr>
-                <tr>
-                    <td><strong>#ITM-108</strong></td>
-                    <td><strong>Lâmpada H7 Farol</strong></td>
-                    <td>Elétrica</td>
-                    <td>R$ 32,00</td>
-                    <td><span class="badge-estoque normal">● Normal (45)</span></td>
-                    <td class="acoes">✏️ 🗑️</td>
-                </tr>
-                <tr>
-                    <td><strong>#ITM-088</strong></td>
-                    <td><strong>Amortecedor Traseiro</strong></td>
-                    <td>Suspensão</td>
-                    <td>R$ 350,00</td>
-                    <td><span class="badge-estoque normal">● Normal (18)</span></td>
-                    <td class="acoes">✏️ 🗑️</td>
-                </tr>
-                <tr>
-                    <td><strong>#ITM-015</strong></td>
-                    <td><strong>Correia Dentada</strong></td>
-                    <td>Motor</td>
-                    <td>R$ 180,00</td>
-                    <td><span class="badge-estoque critico">● Crítico (1)</span></td>
-                    <td class="acoes">✏️ 🗑️</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

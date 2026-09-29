@@ -14,16 +14,16 @@
             </div>
             
             <!-- CAMPOS -->
-            <div class="form-corpo">
+            <form action="{{url_for('cadastrar_responsavel')}}" method="post">
                 
                 <div class="form-linha">
                     <div class="form-campo">
-                        <label>ID (Gerado Auto.)</label>
+                        <label>Gerado Auto</label>
                         <input type="text" value="RSP-8042" disabled class="input-disabled">
                     </div>
                     <div class="form-campo">
                         <label>Função / Cargo</label>
-                        <select>
+                        <select name ="form_cargo_funcao">
                             <option>Selecione o cargo...</option>
                             <option>Mecânico</option>
                             <option>Eletricista</option>
@@ -36,7 +36,15 @@
                 <div class="form-linha">
                     <div class="form-campo full">
                         <label>Nome Completo</label>
-                        <input type="text" placeholder="Ex: Sgt. João Silva">
+                        <input type="text" name="form_nome" placeholder="Ex: Sgt. João Silva">
+                    </div>
+                    <div class="form-campo full">
+                        <label>Email</label>
+                        <input type="text" name="form_email" placeholder="Ex: Sgt. João Silva">
+                    </div>
+                    <div class="form-campo full">
+                        <label>Senha</label>
+                        <input type="text" name="form_senha" placeholder="Ex: Sgt. João Silva">
                     </div>
                 </div>
 
