@@ -1,6 +1,6 @@
 import requests 
 #
-endereco = "http://10.135.232.28:5005"
+endereco = "http://10.135.232.15:5005"
 
 def get_policial():
     url = f"{endereco}/get_policiais"
@@ -35,7 +35,7 @@ def get_viatura():
     return result_viatura.json()
 
 
-def post_viatura(placa, ano, km_atual, prefixo, modelo, status_atual):
+def post_viatura(placa, ano, km_atual,modelo, status_atual):
     url = f"{endereco}/post_viatura"
 
 
@@ -43,7 +43,6 @@ def post_viatura(placa, ano, km_atual, prefixo, modelo, status_atual):
         "placa": placa,
         "ano":ano,
         "km_atual": km_atual,
-        "prefixo": prefixo,
         "modelo": modelo,
         "status_atual": status_atual
 

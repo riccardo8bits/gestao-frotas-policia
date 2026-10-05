@@ -57,9 +57,30 @@ def listar_itens():
 
 
 
-
-@app.route('/cadastrar_viatura')
+@app.route('/cadastrar_viatura', methods=['GET', 'POST'])
 def cadastrar_viatura():
+    if request.method == "POST":
+        placa = request.form.get('form_placa')
+        modelo = request.form.get('form_modelo')
+        ano = request.form.get('form_ano')
+        km_atual = request.form.get('form_km_atual')
+        status_atual = request.form.get('form_status')
+        print(placa,modelo,ano,km_atual,status_atual)
+
+
+        if not placa or not modelo or not ano or not km_atual or not status_atual:
+            flash("Preencha todos os campos", "danger")
+            return redirect(url_for('cadastrar_viatura'))
+
+        try:
+            post_viatura(placa=placa, modelo=modelo, ano=ano, km_atual=km_atual,status_atual=status_atual)
+            flash("Viatura cadastrada com sucesso!", "success")
+            return redirect(url_for('cadastrar_viatura'))
+        except Exception as e:
+            print(f'Error: {e}')
+            flash('Falha no Sistema Interno, Tente Novamente mais Tarde.', 'warning')
+            return redirect(url_for('cadastrar_viatura'))
+
     return render_template('cadastrar_viatura.html')
 
 @app.route('/cadastrar_policial')

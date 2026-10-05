@@ -13,12 +13,13 @@
     </div>
 
     <!-- FORMULÁRIO -->
+    <form action="{{url_for('cadastrar_viatura')}}" method="post">
     <div class="form-container">
         
         <div class="form-linha">
             <div class="form-campo">
                 <label>PLACA</label>
-                <input type="text" placeholder="Ex: ABC1D23" >
+                <input name="form_placa" type="text" placeholder="Ex: ABC1D23" >
             </div>
             
         </div>
@@ -26,7 +27,7 @@
         <div class="form-linha">
             <div class="form-campo full">
                 <label>MODELO DA VIATURA</label>
-                <select>
+                <select name="form_modelo">
                     <option>Selecione o modelo...</option>
                     <option>Renault Duster</option>
                     <option>Chevrolet Trailblazer</option>
@@ -36,7 +37,7 @@
             </div>
             <div class="form-campo full">
                 <label>STATUS DA VIATURA</label>
-                <select>
+                <select name="form_status">
                     <option value="disponivel">Disponivel</option>
                     <option value="oficina">Oficina</option>
                     <option value="atencao">Atenção</option>
@@ -47,16 +48,17 @@
         <div class="form-linha">
             <div class="form-campo">
                 <label>ANO DE FABRICAÇÃO</label>
-                <input type="text" placeholder="YYYY">
+                <input name="form_ano" type="text" placeholder="YYYY">
             </div>
             <div class="form-campo">
                 <label>ODÔMETRO INICIAL (KM)</label>
-                <input type="number" placeholder="0">
+                <input name="form_km_atual" type="number" placeholder="0">
             </div>
+
         </div>
 
         <!-- BOTÃO -->
-        <div class="form-acoes">
+        <div name="form-acoes" class="form-acoes">
             <button class="btn-salvar">💾 SALVAR VIATURA</button>
         </div>
 
